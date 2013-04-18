@@ -59,6 +59,29 @@ database.withNestedSession {
 }
 ```
 
+Usage
+-----
+
+To pull in the implicit conversion to add these two methods, you can extend the trait `NestedScalaQuerySessionsAndTransactions`:
+
+```scala
+import com.timgroup.scalaquery_nested.NestedScalaQuerySessionsAndTransactions
+
+class Cars extends Table[Car]("cars") with NestedScalaQuerySessionsAndTransactions {
+  database withNestedTransaction { /* can nest sessions and transactions... */ }    
+}
+```
+
+Alternatively, you can also import directly from the object into any scope:
+
+```scala
+// inside some scope in which a ScalaQuery database is defined...
+import com.timgroup.scalaquery_nested.NestedScalaQuerySessionsAndTransactions._
+
+database withNestedTransaction { /* can nest sessions and transactions... */ }
+
+```
+
 How to Add as a Dependency
 --------------------------
 
