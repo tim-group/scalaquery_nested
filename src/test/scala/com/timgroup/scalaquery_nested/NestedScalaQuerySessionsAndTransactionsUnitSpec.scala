@@ -33,7 +33,7 @@ class NestedScalaQuerySessionsAndTransactionsUnitSpec extends mutable.Specificat
     }
 
     "reuse existing thread-local session when it exists in both types of functions" in new MockConnectionScope {
-      // starting with f that takes a Session
+      // starting with f that DOES take a Session
       db withNestedSession { s1: Session =>
         db withNestedSession {
           db withNestedSession { s2: Session =>
@@ -117,7 +117,7 @@ class NestedScalaQuerySessionsAndTransactionsUnitSpec extends mutable.Specificat
       there was one(conn).setAutoCommit(true)
     }
 
-    "create a new thread-local session when none exists and f DOES take session" in new MockConnectionScope {
+    "create a new thread-local session when none exists and f does NOT take session" in new MockConnectionScope {
       db withNestedTransaction { maybeThreadLocalSession must beSome }
       maybeThreadLocalSession must beNone
     }
@@ -131,7 +131,7 @@ class NestedScalaQuerySessionsAndTransactionsUnitSpec extends mutable.Specificat
     }
 
     "reuse existing thread-local session when it exists in both types of functions" in new MockConnectionScope {
-      // starting with f that takes a Session
+      // starting with f that DOES take a Session
       db withNestedTransaction { s1: Session =>
         db withNestedTransaction {
           db withNestedTransaction { s2: Session =>
