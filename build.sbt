@@ -15,4 +15,3 @@ libraryDependencies ++= Seq(
 
 libraryDependencies <++= scalaVersion(specs2Dependencies(_))
 
-libraryDependencies <++= scalaVersion(scalaCompilerDependency(_))
