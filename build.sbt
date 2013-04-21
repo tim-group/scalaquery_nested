@@ -17,8 +17,6 @@ libraryDependencies ++= Seq(
 
 libraryDependencies <++= scalaVersion(specs2Dependencies(_))
 
-libraryDependencies <++= scalaVersion(scalaCompilerDependency(_))
-
 publishMavenStyle := true
 
 publishTo <<= version { v: String =>
