@@ -84,19 +84,10 @@ database withNestedTransaction { /* can nest sessions and transactions... */ }
 
 How to Add as a Dependency
 --------------------------
-
-This library is not currently published to any repos, so you must add it 
-as an SBT git dependency, following [these instructions](https://github.com/playframework/Play20/wiki/SBTDependencies).
-
-For example, in a Play Framework project, add the following lines at the bottom of 
-`Build.scala`:
+You can get scala-csv with the following line in your `build.sbt`:
 
 ```scala
-val gitDependencies: Seq[ClasspathDep[ProjectReference]] = Seq(
-  RootProject(uri("git://github.com/youdevise/scalaquery_nested.git#v1.0.0") )
-)
-  
-val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).dependsOn(gitDependencies : _*)
+libraryDependencies += "com.timgroup" %% "scalaquery_nested" % "1.0.0"
 ```
 
 Compatibility
@@ -108,4 +99,3 @@ pass on all Scala versions since 2.9.0-1.
 Contributing
 ------------
 Please feel free to send pull requests. Any change to code must come with tests, of course.
-And if you want to set this library up for normal publishing on maven/ivy repos, we'd love to see that as well ;)
