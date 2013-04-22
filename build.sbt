@@ -2,7 +2,9 @@ name := "scalaquery_nested"
 
 organization := "com.timgroup"
 
-version := "1.0.0"
+// Change to non-SNAPSHOT version to publish a release
+//version := "1.0.0"
+version := "1.0.0-SNAPSHOT"
 
 scalaVersion := "2.9.1"
 
@@ -35,8 +37,8 @@ pomExtra := (
   <url>https://github.com/youdevise/scalaquery_nested</url>
   <licenses>
     <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <name>MIT license</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -48,8 +50,10 @@ pomExtra := (
     <developer>
       <id>ms-tg</id>
       <name>Marc Siegel</name>
+      <email>marc.siegel@timgroup.com</email>
     </developer>
   </developers>
 )
 
-credentials += Credentials(Path.userHome / ".sbt" / "sonatype.credentials")
+// CHECK IF I NEED THIS if ~/.sbt/sonatype.sbt is not picked up automatically
+//credentials += Credentials(Path.userHome / ".sbt" / "sonatype.credentials")
