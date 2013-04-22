@@ -4,7 +4,7 @@ organization := "com.timgroup"
 
 // Change to non-SNAPSHOT version to publish a release
 //version := "1.0.0"
-version := "1.0.0-SNAPSHOT"
+version := "1.0.1-SNAPSHOT"
 
 scalaVersion := "2.9.1"
 
@@ -55,5 +55,28 @@ pomExtra := (
   </developers>
 )
 
-// CHECK IF I NEED THIS if ~/.sbt/sonatype.sbt is not picked up automatically
-//credentials += Credentials(Path.userHome / ".sbt" / "sonatype.credentials")
+// NOTE (2013-04-22, Marc): To publish to Sonatype:
+//
+// 1. Install sbt-extras to handle multiple versions of sbt gracefully
+//      https://github.com/paulp/sbt-extras
+//
+// 2. Generate and publish your GPG key
+//      https://docs.sonatype.org/display/Repository/How+To+Generate+PGP+Signatures+With+Maven
+//
+// 3. Setup sbt-pgp plugin
+//      ~/.sbt/0.12.3/plugins/gpg.sbt
+//          addSbtPlugin("com.typesafe.sbt" % "sbt-pgp" % "0.8")
+//
+// 4. Setup local Sonatype credentials
+//      ~/.sbt/0.12.3/plugins/sonatype.sbt:
+//          credentials += Credentials("Sonatype Nexus Repository Manager",
+//                                     "oss.sonatype.org",
+//                                     USERNAME,
+//                                     PASSWORD)
+//
+// 5. Bump version
+//       For snapshot versions: 1.0.0-SNAPSHOT
+//       For releases: 1.0.0
+//
+// 6. Publish
+//       sbt-extras.sh clean publish-signed
