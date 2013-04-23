@@ -84,7 +84,7 @@ database withNestedTransaction { /* can nest sessions and transactions... */ }
 
 How to Add as a Dependency
 --------------------------
-You can get scala-csv with the following line in your `build.sbt`:
+You can get scalaquery_nested with the following line in your `build.sbt`:
 
 ```scala
 libraryDependencies += "com.timgroup" %% "scalaquery_nested" % "1.0.0"
