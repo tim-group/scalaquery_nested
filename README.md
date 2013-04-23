@@ -4,7 +4,7 @@ ScalaQuery_Nested
 
 Summary
 -------
-Safely manage nested sessions & transactions in [ScalaQuery 0.10.0-M1](https://github.com/slick/slick/tree/0.10.0-M1).
+Safely manage nested sessions & transactions in [ScalaQuery 0.10.0-M1](https://github.com/slick/slick/tree/0.10.0-M1) for Scala versions 2.9.0-1 through current.
 
 Details
 -------
@@ -94,7 +94,7 @@ Compatibility
 -------------
 As of version [v1.0.0](https://github.com/youdevise/scalaquery_nested/blob/v1.0.0/.travis.yml),
 we intransitively compile against ScalaQuery 0.10.0-M1 (the last pre-slick release), and our tests
-pass on all Scala versions since 2.9.0-1.
+pass on all Scala versions since 2.9.0-1 through 2.10.0.
 
 Contributing
 ------------
