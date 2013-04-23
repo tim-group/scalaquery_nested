@@ -78,5 +78,8 @@ pomExtra := (
 //       For snapshot versions: 1.0.0-SNAPSHOT
 //       For releases: 1.0.0
 //
-// 6. Publish
+// 6. Deploy and Stage to Sonatype
 //       sbt-extras.sh clean publish-signed
+//
+// 7. Manually release it to Maven Central
+//       https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide#SonatypeOSSMavenRepositoryUsageGuide-8a.ReleaseIt
