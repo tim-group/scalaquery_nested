@@ -64,6 +64,44 @@ class NestedScalaQuerySessionsAndTransactionsUnitSpec extends mutable.Specificat
       maybeThreadLocalSession must beNone
     }
 
+    "reuse existing thread-local session across subsequent calls" in new MockConnectionScope {
+      db withNestedSession { 
+        val s0 = maybeThreadLocalSession.getOrElse(null)
+        val s1 = db withNestedSession {
+          s0 must beTheSameAs (maybeThreadLocalSession.get)
+          maybeThreadLocalSession.get
+        }
+        val s2 = db withNestedSession {
+          s0 must beTheSameAs (maybeThreadLocalSession.get)
+          maybeThreadLocalSession.get
+        }
+        s1 must beTheSameAs(s2)
+        s0 must not be (null)
+      }
+      maybeThreadLocalSession must beNone
+
+    }
+
+    "reuse existing thread-local session across subsequent calls with exception" in new MockConnectionScope {
+      db withNestedSession { 
+        val s0 = maybeThreadLocalSession.getOrElse(null)
+        try {
+          db withNestedSession {
+            throwSomething()
+          }
+        } catch {
+          case _ => // do nothing
+        }
+
+        val s2 = db withNestedSession {
+          s0 must beTheSameAs (maybeThreadLocalSession.get)
+          maybeThreadLocalSession.get
+        }
+        s0 must beTheSameAs (s2)
+        s0 must not be (null)
+      }
+      maybeThreadLocalSession must beNone
+    }
   }
 
   "NestedScalaQuerySessionsAndTransactions#withNestedTransaction" should {
@@ -119,6 +157,35 @@ class NestedScalaQuerySessionsAndTransactionsUnitSpec extends mutable.Specificat
 
     "create a new thread-local session when none exists and f does NOT take session" in new MockConnectionScope {
       db withNestedTransaction { maybeThreadLocalSession must beSome }
+      maybeThreadLocalSession must beNone
+    }
+
+    "create and pass a new thread-local session when none exists and use in withNestedSession" in new MockConnectionScope {
+      db withNestedTransaction { 
+        val s0 = maybeThreadLocalSession.getOrElse(null)
+        db withNestedSession {
+          val s1 = maybeThreadLocalSession.get
+          s1 must beTheSameAs(s0)
+        }
+      }
+      maybeThreadLocalSession must beNone
+    }
+
+    "create and pass a new thread-local session when none exists and use in withNestedSession and subsequent after exception thrown" in new MockConnectionScope {
+      db withNestedTransaction { 
+        val s0 = maybeThreadLocalSession.getOrElse(null)
+        try {
+          db withNestedSession {
+             throwSomething()
+          }
+        } catch {
+          case _ => // Do nothing
+        }
+        db withNestedSession {
+          val s1 = maybeThreadLocalSession.get
+          s1 must beTheSameAs(s0)
+        }
+      }
       maybeThreadLocalSession must beNone
     }
 
