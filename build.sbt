@@ -3,8 +3,8 @@ name := "scalaquery_nested"
 organization := "com.timgroup"
 
 // Change to non-SNAPSHOT version to publish a release
-//version := "1.0.0"
-version := "1.1.0-SNAPSHOT" // 1.1.x supports Scala 2.10.x + Slick 1.0.x
+version := "1.1.0-M1"
+//version := "1.1.0-SNAPSHOT" // 1.1.x supports Scala 2.10.x + Slick 1.0.x
 
 scalaVersion := "2.10.4"
 
