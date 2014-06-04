@@ -4,15 +4,15 @@ organization := "com.timgroup"
 
 // Change to non-SNAPSHOT version to publish a release
 //version := "1.0.0"
-version := "1.0.1-SNAPSHOT"
+version := "1.1.0-SNAPSHOT" // 1.1.x supports Scala 2.10.x + Slick 1.0.x
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.10.4"
 
-crossScalaVersions := Seq("2.9.0-1", "2.9.1", "2.9.2", "2.10.0")
+crossScalaVersions := Seq("2.10.4")
 
 libraryDependencies ++= Seq(
-  // Hard-code compile dependency to last pre-slick release: 0.10.0-M1 on Scala 2.9.1
-  "org.scalaquery" % "scalaquery_2.9.1" % "0.10.0-M1" intransitive(),
+  // Hard-code compile dependency to latest Slick 1.0.x release on Scala 2.10.x
+  "com.typesafe.slick" %% "slick" % "1.0.1",
   // Test-only dependencies
   "org.mockito" % "mockito-core" % "1.9.0" % "test"
 )
