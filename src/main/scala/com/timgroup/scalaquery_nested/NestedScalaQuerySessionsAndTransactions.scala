@@ -3,7 +3,7 @@ package com.timgroup.scalaquery_nested
 import java.sql.SQLException
 import scala.util.control.Exception.catching
 
-import org.scalaquery.session.{Database, Session}
+import scala.slick.session.{Database, Session}
 
 /**
  * Extend this trait to enrich Database with #withNestedSession and Database#withNestedTransaction

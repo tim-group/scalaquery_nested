@@ -3,7 +3,7 @@ package com.timgroup.scalaquery_nested
 import java.sql.Connection
 import scala.util.control.Exception.ignoring
 
-import org.scalaquery.session.{Database, Session}
+import scala.slick.session.{Database, Session}
 import org.specs2.mock.Mockito
 import org.specs2.mutable
 import org.specs2.specification.Scope
