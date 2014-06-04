@@ -90,7 +90,7 @@ class NestedScalaQuerySessionsAndTransactionsUnitSpec extends mutable.Specificat
             throwSomething()
           }
         } catch {
-          case _ => // do nothing
+          case _: RuntimeException => // do nothing
         }
 
         val s2 = db withNestedSession {
@@ -179,7 +179,7 @@ class NestedScalaQuerySessionsAndTransactionsUnitSpec extends mutable.Specificat
              throwSomething()
           }
         } catch {
-          case _ => // Do nothing
+          case _: RuntimeException => // Do nothing
         }
         db withNestedSession {
           val s1 = maybeThreadLocalSession.get
