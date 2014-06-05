@@ -90,11 +90,16 @@ You can get scalaquery_nested with the following line in your `build.sbt`:
 libraryDependencies += "com.timgroup" %% "scalaquery_nested" % "1.1.0-M1"
 ```
 
-Compatibility
--------------
-As of version [v1.0.0](https://github.com/youdevise/scalaquery_nested/blob/v1.0.0/.travis.yml),
-we intransitively compile against ScalaQuery 0.10.0-M1 (the last pre-slick release), and our tests
-pass on all Scala versions since 2.9.0-1 through 2.10.0.
+Versioning
+----------
+
+ScalaQueryNested is available for multiple versions of Scala and Slick/ScalaQuery:
+
+| Library version | branch                              | Slick version   | Scala version |
+|-----------------|-------------------------------------|-----------------|---------------|
+| 1.0.x           | 1.0.x-for-scala_2_9-scalaquery-0_10 | 0.10.0-M1       | 2.9.x         |
+| 1.1.x           | master                              | 1.0.x           | 2.10.x        |
+| 1.2.x (planned) |                                     | 2.0.x           | 2.10.x        |
 
 Contributing
 ------------
