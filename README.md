@@ -1,6 +1,6 @@
 ScalaQuery_Nested
 ================
-[![Build Status](https://travis-ci.org/youdevise/scalaquery_nested.png)](https://travis-ci.org/youdevise/scalaquery_nested)
+[![Build Status](https://travis-ci.org/tim-group/scalaquery_nested.png)](https://travis-ci.org/tim-group/scalaquery_nested)
 
 Summary
 -------
